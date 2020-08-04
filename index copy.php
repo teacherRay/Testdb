@@ -1,12 +1,18 @@
-
+<?php if(isset ($_POST["btnSelectClass"])){
+$classroom = $_POST['classroom'];
+} 
+?>
 <?php require_once 'process.php'; ?>
-<?php $result = $mysqli->query("SELECT * FROM data") or die($mysqli->error()); ?>
+<?php $sql="SELECT id, studentid, name, classroom, pacomment FROM data WHERE classroom='$classroom'"; ?>
+<?php $result = $mysqli->query($sql) or die($mysqli->error()); ?>
 
 <?php
 $mysqli = new mysqli("localhost","ray","password","reports");
-$classroom = '';
 
-if (isset($_POST["pushme"])) {  
+
+
+
+if (isset($_POST["btnSelectClass"])) {  
   $classroom = $_POST['classroom'];
   $sql="SELECT id, studentid, name, classroom, pacomment FROM data WHERE classroom='$classroom'";
   $result = $mysqli->query($sql) or die($mysqli->error());
@@ -22,7 +28,6 @@ if (isset($_POST["pushme"])) {
                 ?>
             </div>
         <?php endif ?>
-     
 
 <!DOCTYPE html>
 <html>
@@ -118,19 +123,14 @@ body {
   <div class="search-container">
     <form action="index.php" method="POST" target="_self">
       <input type="text" value= "102i am" name="classroom"> 
-      <button type="submit" value="Push me" name = "pushme"> <i class="fa fa-search"></i></button>
+      <button type="submit" value="Submit" name = "btnSelectClass"> <i class="fa fa-search"></i></button>
     </form>
   </div>
 </div>
 
-//
-
  <?php $resultcomment = $mysqli->query("SELECT EnglishComment FROM comments"); ?>
  <div class="container" align-content-center>
-
-  
-   
-
+ 
     <div class="row justify-content-center">
         <form action="process.php" method="POST">
             <input type="hidden" name="id" value="<?php echo $id; ?>">

@@ -20,6 +20,7 @@ if (isset($_POST["btnSelectClass"])) {
 ?>
 
 
+
 <?php if (isset($_SESSION['message'])): ?>
             <div class="alert alert-<?=$_SESSION['msg_type']?>">
                 <?php 
@@ -129,10 +130,7 @@ body {
 </div>
 
  <?php $resultcomment = $mysqli->query("SELECT EnglishComment FROM comments"); ?>
- <div class="container" align-content-center>
-
-  
-   
+ <div class="container" align-content-center>  
 
     <div class="row justify-content-center">
         <form action="process.php" method="POST">
@@ -154,6 +152,7 @@ body {
                <?php
                     while($rows = $resultcomment-> fetch_assoc())
                     {
+                      
                         $EnglishComment = $rows['EnglishComment'];
                         echo "<option value='$EnglishComment'>$name.$EnglishComment</option>";
                     }
@@ -182,6 +181,7 @@ body {
                             <th><center>ID</center></th>
                             <th>Name and Comment</th>
                             
+                            
 
                         </tr>
                     </thead>
@@ -200,7 +200,7 @@ body {
     <!-- ************************************** Put data into Classlist table rows ******************************************   -->
                     
                         <td><center><?php echo $row['studentid']; ?></center></td>
-                        <td><?php echo $row['name']." ".$row['pacomment']." ".$row['classroom'] ?></td>
+                        <td><?php echo $row['name']." ".$row['pacomment'] ?></td>
                         
                    </tr>
                   

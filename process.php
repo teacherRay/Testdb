@@ -23,8 +23,7 @@ if (isset($_GET['edit'])){
    
 }
 
-if (isset($_POST['update'])){
-    $classroom = $_POST['classroom'];
+if (isset($_POST['update'])){    
     $id = $_POST['id'];
     $pacomment = $_POST['pacomment'];   
     $mysqli->query("UPDATE data SET pacomment= '$pacomment' WHERE id=$id") or die($mysqli->error);
@@ -36,3 +35,5 @@ if (isset($_POST['update'])){
     header('location: index.php');
 
 }
+
+?>
