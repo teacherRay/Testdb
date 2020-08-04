@@ -7,7 +7,7 @@ $id = 0;
 $update = false;
 $name = '';
 $classroom = '';
-$classtime = '';
+
 
 
 if (isset($_GET['edit'])){
